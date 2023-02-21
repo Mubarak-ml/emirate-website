@@ -1,0 +1,118 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">SCHOOL NEWS</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'Home' %}">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">LATEST UPDATES</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Blog Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">News</h5>
+                <h1>Latest News Updates</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="row pb-3">
+                        {% for i in news %}
+                        <div class="col-lg-6 mb-4">
+                            <div class="blog-item position-relative overflow-hidden rounded mb-2">
+                                <img class="img-fluid" src="{{i.fpict.url}}" alt="">
+                                <a class="blog-overlay text-decoration-none" href="{% url 'Single' i.id %}">
+                                    <h5 class="text-white mb-3">{{i.title}}</h5>
+                                    <p class="text-primary m-0">{{i.Created|date}}</p>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="col-12">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination pagination-lg justify-content-center mb-0">
+                                  <li class="page-item disabled">
+                                    <a class="page-link" href="#" aria-label="Previous">
+                                      <span aria-hidden="true">&laquo;</span>
+                                      <span class="sr-only">Previous</span>
+                                    </a>
+                                  </li>
+                                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                  <li class="page-item">
+                                    <a class="page-link" href="#" aria-label="Next">
+                                      <span aria-hidden="true">&raquo;</span>
+                                      <span class="sr-only">Next</span>
+                                    </a>
+                                  </li>
+                                </ul>
+                              </nav>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                  
+                    <!-- Search Form -->
+                    <div class="mb-5">
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-lg" placeholder="Keyword">
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-transparent text-primary"><i
+                                            class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+    
+                    <!-- Category List -->
+                    <div class="mb-5">
+                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Our Classes</h3>
+                        <ul class="list-group list-group-flush">
+                            {% for cl in clss %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <a href="" class="text-decoration-none h6 m-0">{{cl.name}}</a>
+                                <span class="badge badge-primary badge-pill">{{cl.snumber}}</span>
+                            </li>
+                            {% endfor %}
+                            <p></p>
+                            <a class="btn btn-primary" data-bs-toggle="collapse" href="{% url 'Classes' %}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                See More Classes
+                            </a>                           
+                        </ul>
+                    </div>
+    
+                    <!-- Recent Post -->
+                    <div class="mb-5">
+                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h3>
+                        {% for i in recent %}
+                        <a class="d-flex align-items-center text-decoration-none mb-3" href="{% url 'Single' i.id %}">
+                            <img class="img-fluid rounded" src="img/blog-80x80.jpg" alt="">
+                            <div class="pl-3">
+                                <h6 class="m-1">{{i.title}}</h6>
+                                <small>{{i.Created|timesince}} ago</small>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Blog End -->
+
+{% endblock content %}

@@ -1,0 +1,1 @@
+web: gunicorn emirate.wsgi --log-file -

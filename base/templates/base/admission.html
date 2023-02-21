@@ -1,0 +1,40 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">Admission</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'Home' %}">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">Admission Requirements</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+    <div class="card text-center">
+
+        <h3>School Admission requirements into various category of classes are as follows</h3>
+   
+        <div>
+        <ol class="list-group list-group-numbered">
+            <li class="list-group-item">Photocopy of Testimonial or Certificate of completion of</li>
+            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Primary School for JSS 1</li>
+            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Junior Secondary School for SSS 1</li>
+            <li class="list-group-item">A transfer certificate for all other categories of students</li>
+            <li class="list-group-item">Birth certificate or Statutory Declaration of Age</li>
+            <li class="list-group-item">All other information can be provided by the guardian of the incoming student</li>
+          </ol>
+        </div>
+    <p></p>
+    
+        Signed: <h5>School Management</h5>
+    
+    </div>
+
+{% endblock content %}

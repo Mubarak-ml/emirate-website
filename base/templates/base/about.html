@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">About</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'Home' %}">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">About</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid rounded mb-4 mb-lg-0" src="{% static 'img/about2.jpg' %}" alt="">
+                </div>
+                <div class="col-lg-7">
+                    <div class="text-left mb-4">
+                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">About Us</h5>
+                        <h1>A Great Place For Education</h1>
+                    </div>
+                    <p>The history of Argungu Emirate Secondary School had its root right from the school joint meeting with all its Education Committees.
+                        It was the outcome of this joint meeting that the school was directed to write an application to Kebbi State Ministry of Education seeking its permission to establish, Junior Secondary School (JSS) on the same premises of Argungu Emirate Model Primary School.
+                        The application which was written on 15th November, 2011 was approved and granted on 12th April, 2012. The certificate to this approval was signed by Alh. Aliyu B. Bunza the Deputy Director Inspectorate services by then.
+                        After receiving the permission to establish Junior Secondary School (JSS) we also changed the schools name from Argungu Emirate Model Primary School to Argungu Emirate Primary and Secondary School.
+                        </p>
+                    <p>When our pioneer students were about to take their Basic Education Certificate Examination (BECE) we applied for permission to proceed to Senior Secondary School (SSS) so that the students wishing to remain with us could do so.
+                        We wrote the application for permission to proceed to Senior Secondary School on 21st February 2015 and got the approval on 4th March 2015. Immediately we received the approval, we moved ahead to apply for the change of school’s name from Argungu Emirate Primary and Secondary School to Nabame School for Comprehensive Studies. This name too was renamed Argungu Emirate Secondary School. In a nutshell this is how the name Argungu Emirate Secondary School came about.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+{% endblock content %}

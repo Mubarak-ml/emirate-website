@@ -1,0 +1,116 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+    <!-- Header Start -->
+    <div class="container-fluid page-header" style="margin-bottom: 90px;">
+        <div class="container">
+            <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+                <h3 class="display-4 text-white text-uppercase">NEWS Details</h3>
+                <div class="d-inline-flex text-white">
+                    <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'Home' %}">Home</a></p>
+                    <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                    <p class="m-0 text-uppercase">NEWS DETAILS</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Header End -->
+
+
+    <!-- Detail Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="mb-5">
+                        <h6 class="text-primary mb-3">{{single.Created|date}}</h6>
+                        <h1 class="mb-5">{{single.description}}</h1>
+                        <img class="img-fluid rounded w-100 mb-4" src="{{single.fpict.url}}" alt="Image">
+                        <p>{{single.title}}</p>
+                        <h2 class="mb-4">{{single.description}}</h2>
+                        <img class="img-fluid rounded w-50 float-left mr-4 mb-3" src="{{single.Spict.url}}" alt="Image">
+                        <p>{{single.detail}}</p>
+                        
+                    </div>
+
+
+                    <!-- Comment Form -->
+                    <div class="bg-secondary rounded p-5">
+                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" class="form-control border-0" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control border-0" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input type="url" class="form-control border-0" id="website">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" cols="30" rows="5" class="form-control border-0"></textarea>
+                            </div>
+                            <div class="form-group mb-0">
+                                <input type="submit" value="Leave Comment" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mt-5 mt-lg-0">
+                    <!-- Search Form -->
+                    <div class="mb-5">
+                        <form action="">
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-lg" placeholder="Keyword">
+                                <div class="input-group-append">
+                                    <span class="input-group-text bg-transparent text-primary"><i
+                                            class="fa fa-search"></i></span>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Category List -->
+                    <div class="mb-5">
+                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Our Classes</h3>
+                        <ul class="list-group list-group-flush">
+                            {% for cl in clss %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                <a href="" class="text-decoration-none h6 m-0">{{cl.name}}</a>
+                                <span class="badge badge-primary badge-pill">{{cl.snumber}}</span>
+                            </li>
+                            {% endfor %}
+                            <p></p>
+                            <a class="btn btn-primary" data-bs-toggle="collapse" href="{% url 'Classes' %}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                See More Classes
+                            </a>                           
+                        </ul>
+                    </div>
+
+                    <!-- Recent Post -->
+                    <div class="mb-5">
+                        <h3 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h3>
+                        {% for i in recent %}
+                        <a class="d-flex align-items-center text-decoration-none mb-3" href="{% url 'Single' i.id %}">
+                            <img class="img-fluid rounded" src="img/blog-80x80.jpg" alt="">
+                            <div class="pl-3">
+                                <h6 class="m-1">{{i.title}}</h6>
+                                <small>{{i.Created|timesince}} ago</small>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Detail End -->
+{% endblock content %}

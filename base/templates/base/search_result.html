@@ -1,0 +1,182 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+  
+<div class="col d-flex justify-content-center">
+    <div class="col-lg-4">
+      <div class="card border-0">
+          <div class="card-header bg-light text-center p-4">
+              <h3 class="m-0">Senior Science Class</h3>
+          </div>
+          <div class="card-body rounded-bottom bg-info p-5">
+              <form id="post-form" method="POST" >
+                  {% csrf_token %}
+                  <div class="form-group">
+                    <input type="text" name="StudentNo" class="form-control border-0 p-4" placeholder="Student Number" required="required" />
+                  </div>
+                  <div>
+                    <button type="submit" class="btn btn-dark btn-block border-0 py-3">Check Result</button>
+                  </div>
+              </form>
+              <h5 class="text-center">{{success}}</h5>
+          </div>
+      </div>
+      <button class="btn btn-white btn-block border-0 py-3"  onclick="openDiv();"> Click here to display and print your result</button>
+    </div> 
+</div>
+<br>
+
+<style>
+  @media print{
+    body *{
+    visibility: hidden;
+  }
+  .print-page, .print-page * {
+    visibility: visible;
+  }
+  .print-page {
+    position: absolute;
+    left: 50px;
+    top: 0px;
+    bottom: 0px;
+  }
+}
+</style>
+<div class="card text-center print-page" id = "content" style="display: none;">
+  <div class="card-header">
+    <h2>STUDENT RESULT</h2>
+    <h5>FOR {{gold.TERM}} TERM, {{gold.YEAR}} ACADEMIC SESSION</h5>
+  </div>
+  <div class="card-body">
+    <table class="table">
+      <tr>
+        <th>STUDENT NUMBER: 
+          <td>{{gold.StudentNo}}</td>
+        </th>
+        <th>NAME:
+          <td>{{gold.NAME}}</td> 
+        </th>
+      </tr>
+      <tr>
+        <th>GENDER: 
+          <td>{{gold.GENDER}}</td>
+        </th>
+        <th>CLASS: 
+          <td>{{gold.CLASS}}</td>
+        </th>  
+      </tr>
+      <tr>
+        <th>POSITION: 
+          <td>{{gold.POSITION}}</td>
+        </th>
+        <th>OUT OF: 
+          <td>{{gold.OUTOF}}</td>
+        </th>
+      </tr>
+    </table>
+    <table class="table">
+      <tr> 
+        <th>SUBJECT</th>
+        <th>SCORE</th>
+        <th>REMARKS</th>
+      </tr>
+      <tr>
+        <td>ENGLISH</td> 
+        <td>{{gold.ENGLISH}}</td>
+      </tr>
+      <tr>
+        <td>MATHEMATICS</td> 
+        <td>{{gold.MATHEMATICS}}</td>
+      </tr>
+      <tr>
+        <td>PHYSICS</td> 
+        <td>{{gold.PHYSICS}}</td>
+      </tr>
+      <tr>
+        <td>CHEMISTRY</td> 
+        <td>{{gold.CHEMISTRY}}</td>
+      </tr>
+      <tr>
+        <td>BIOLOGY</td> 
+        <td>{{gold.BIOLOGY}}</td>
+      </tr>
+      <tr>
+        <td>ANIMAL HUSBANDRY</td> 
+        <td>{{gold.ANIMALHUSBANDRY}}</td>
+      </tr>
+      <tr>
+        <td>CIVIC EDUCATION</td> 
+        <td>{{gold.CIVICEDUCATION}}</td>
+      </tr>
+      <tr>
+        <td>ISLAMIC STUDIES</td> 
+        <td>{{gold.ISLAMICSTUDIES}}</td>
+      </tr>
+      <tr>
+        <td>HAUSA LANGUAGE</td> 
+        <td>{{gold.HAUSALANGUAGE}}</td>
+      </tr>
+      <tr> 
+        <th>TOTAL</th>
+        <th>{{gold.TOTAL}}</th>
+      </tr>
+    </table>
+  </div>
+  <div class="card-footer text-muted">
+    NOTE: Meet your Class master for report card
+  </div>
+  <div>
+    <button class="btn btn-dark" onclick="window.print()">Print</button>
+    <button class="btn btn-dark" onclick="closeDiv()">Close</button>
+  </div>
+ </div>
+ 
+ <script type="text/javascript">
+
+  function openDiv(){                      
+    $('#content').show();
+  
+    $.ajax({
+            type: 'POST',
+            url:'/search/',
+            data:{
+              studentno: $('#StudentNo').val(),
+              csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+            },
+            success: function(){
+              
+            }
+          });
+   }
+  
+   function closeDiv() {
+    $('#content').hide();
+   }
+  
+  </script> 
+
+{% endblock content %}
+
+
+<!-- On rows 
+<tr class="table-primary">...</tr>
+<tr class="table-secondary">...</tr>
+<tr class="table-success">...</tr>
+<tr class="table-danger">...</tr>
+<tr class="table-warning">...</tr>
+<tr class="table-info">...</tr>
+<tr class="table-light">...</tr>
+<tr class="table-dark">...</tr>
+
+<!-- On cells (`td` or `th`) 
+<tr>
+  <td class="table-primary">...</td>
+  <td class="table-secondary">...</td>
+  <td class="table-success">...</td>
+  <td class="table-danger">...</td>
+  <td class="table-warning">...</td>
+  <td class="table-info">...</td>
+  <td class="table-light">...</td>
+  <td class="table-dark">...</td>
+</tr> -->

@@ -1,0 +1,69 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<!-- Header Start -->
+<div class="container-fluid page-header" style="margin-bottom: 90px;">
+    <div class="container">
+        <div class="d-flex flex-column justify-content-center" style="min-height: 300px">
+            <h3 class="display-4 text-white text-uppercase">Examination Results</h3>
+            <div class="d-inline-flex text-white">
+                <p class="m-0 text-uppercase"><a class="text-white" href="{% url 'Home' %}">Home</a></p>
+                <i class="fa fa-angle-double-right pt-1 px-3"></i>
+                <p class="m-0 text-uppercase">End of term Examination results</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header End -->
+
+<div class="container-fluid bg-registration py-5" style="margin: 90px 0px;">
+    <div class="container py-5">
+        <div class="row align-items-center">
+
+            <div class="row">               
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Senior Science Students</h5>
+                      <p class="card-text">All Senior Secondary students offering Science Subjects.</p>
+                      <a href="{% url 'SearchResult' %}" class="btn btn-primary">Check result</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Senior Art Students</h5>
+                      <p class="card-text">All Senior Secondary students offering Art Subjects.</p>
+                      <a href="{% url 'ResultArts' %}" class="btn btn-primary">Check result</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="row">               
+                <div class="col-sm-6 mb-3 mb-sm-0">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">SSS One Students</h5>
+                      <p class="card-text">All SSS One classes offering all subjects.</p>
+                      <a href="{% url 'ResultOne' %}" class="btn btn-primary">Check result</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Junior Secondary School Students</h5>
+                      <p class="card-text">All JSS 3, JSS 2, JSS 1 classes.</p>
+                      <a href="{% url 'ResultJss' %}" class="btn btn-primary">Check result</a>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
