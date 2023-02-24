@@ -12,17 +12,18 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n)pba@!$kep*%)_zkm=3(6l450g2wxo(w9h!*ggqv^c^l=!fp='
-
+SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'import_export',
     'django_filters',
+    'storages',   
 ]
 
 MIDDLEWARE = [
@@ -62,7 +64,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            BASE_DIR / 'templates'
+            os.path.join(BASE_DIR, 'templates')
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -85,7 +87,7 @@ WSGI_APPLICATION = 'emirate.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -126,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+""" STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -136,10 +138,62 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
+MEDIA_ROOT = os.path.join(BASE_DIR, '/images') """
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+STATIC_LOCATION = 'staticfiles'
+STATIC_URL = 'https://hanancomputers/staticfiles/'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
+
+MEDIA_LOCATION = 'images'
+MEDIA_URL ='https://hanancomputers.s3.amazonaws.com/images/'
+DEFAULT_FILE_STORAGE = 'emirate.media_storages.MediaStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# S3 Bucket Configurations
+
+
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'hanancomputers'
+AWS_S3_REGION_NAME = "us-east-2"
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_QUERYSTRING_AUTH = False
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_LOCATION = 'staticfiles'
+
+
+
+""" <CORSConfiguration>
+ <CORSRule>
+   <AllowedOrigin>*</AllowedOrigin>
+   <AllowedMethod>PUT</AllowedMethod>
+   <AllowedMethod>POST</AllowedMethod>
+   <AllowedMethod>GET</AllowedMethod>
+   <AllowedHeader>*</AllowedHeader>
+ </CORSRule>
+</CORSConfiguration> 
+
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "POST",
+            "GET",
+            "PUT"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": []
+    }
+]
+
+"""
