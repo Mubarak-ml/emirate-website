@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -167,6 +167,10 @@ AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
 AWS_LOCATION = 'staticfiles'
 
+# HTTP SETTINGS
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIES_SECURE = True
+#SECURE_SSL_REDIRECT = True
 
 
 """ <CORSConfiguration>
