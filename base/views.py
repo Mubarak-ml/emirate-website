@@ -32,25 +32,29 @@ def result(request):
     
 def searchResult(request):
     if request.method == 'POST':
+        year = request.POST.get('YEAR')
+        term = request.POST.get('TERM')
         studentno = request.POST.get('StudentNo').upper()
         try:
-            gold = Science.objects.get(StudentNo=studentno)
+            golds = Science.objects.get(StudentNo=studentno, YEAR=year, TERM=term)
             success = 'Student result retrieved successfully'
         except Science.DoesNotExist:
-             return HttpResponse("You entered Incorrect Student Number")
-        context = {'gold':gold, 'success':success}
+             return HttpResponse("You have entered Incorrect Student Exam details")
+        context = {'gold':golds, 'success':success}
         return render(request, 'base/search_result.html', context)
     else:    
         return render(request, 'base/search_result.html')
     
 def searchArts(request):
     if request.method == 'POST':
+        year = request.POST.get('YEAR')
+        term = request.POST.get('TERM')
         studentno = request.POST.get('StudentNo').upper()
         try:
-            gold = Arts.objects.get(StudentNo=studentno)
+            gold = Arts.objects.get(StudentNo=studentno, YEAR=year, TERM=term)
             success = 'Student result retrieved successfully'
         except Arts.DoesNotExist:
-             return HttpResponse("You entered Incorrect Student Number")
+             return HttpResponse("You have entered Incorrect Student Exam details")
         context = {'gold':gold, 'success':success}
         return render(request, 'base/result_arts.html', context)
     else:    
@@ -58,12 +62,14 @@ def searchArts(request):
 
 def searchOne(request):
     if request.method == 'POST':
+        year = request.POST.get('YEAR')
+        term = request.POST.get('TERM')
         studentno = request.POST.get('StudentNo').upper()
         try:
-            gold = Sone.objects.get(StudentNo=studentno)
+            gold = Sone.objects.get(StudentNo=studentno, YEAR=year, TERM=term)
             success = 'Student result retrieved successfully'
         except Sone.DoesNotExist:
-             return HttpResponse("You entered Incorrect Student Number")
+             return HttpResponse("You have entered Incorrect Student Exam details")
         context = {'gold':gold, 'success':success}
         return render(request, 'base/result_one.html', context)
     else:    
@@ -71,12 +77,14 @@ def searchOne(request):
 
 def searchJss(request):
     if request.method == 'POST':
+        year = request.POST.get('YEAR')
+        term = request.POST.get('TERM')
         studentno = request.POST.get('StudentNo').upper()
         try:
-            gold = Junior.objects.get(StudentNo=studentno)
+            gold = Junior.objects.get(StudentNo=studentno, YEAR=year, TERM=term)
             success = 'Student result retrieved successfully'
         except Junior.DoesNotExist:
-             return HttpResponse("You entered Incorrect Student Number")
+             return HttpResponse("You have entered Incorrect Student Exam details")
         context = {'gold':gold, 'success':success}
         return render(request, 'base/result_jss.html', context)
     else:    

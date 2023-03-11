@@ -9,14 +9,14 @@ TCHOICES = (
 )
 
 GCHOICES = (
-    ('Male','MALE'),
-    ('Female', 'FEMALE'),   
+    ('MALE','MALE'),
+    ('FEMALE', 'FEMALE'),   
 )
 
 YCHOICES = (
-    ('First','FIRST'),
-    ('Second', 'SECOND'),
-    ('Third', 'THIRD'),    
+    ('FIRST','FIRST'),
+    ('SECOND', 'SECOND'),
+    ('THIRD', 'THIRD'),    
 )
 
 

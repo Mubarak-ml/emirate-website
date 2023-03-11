@@ -13,7 +13,23 @@
               <form id="post-form" method="POST" >
                   {% csrf_token %}
                   <div class="form-group">
-                    <input type="text" name="StudentNo" class="form-control border-0 p-4" placeholder="Student Number" required="required" />
+                    <select name="YEAR" class="custom-select border-0 px-4" style="height: 47px;">
+                        <option selected>Choose a Session</option>
+                        <option value="2022/2023">2022/2023</option>
+                        <option value="2023/2024">2023/2024</option>
+                        <option value="2024/2025">2024/2025</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <select name="TERM" class="custom-select border-0 px-4" style="height: 47px;">
+                        <option selected>Select a Term</option>
+                        <option value="FIRST">FIRST</option>
+                        <option value="SECOND">SECOND</option>
+                        <option value="THIRD">THIRD</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" name="StudentNo" class="form-control border-0 p-4" placeholder="Enter Student Number" required="required" />
                   </div>
                   <div>
                     <button type="submit" class="btn btn-dark btn-block border-0 py-3">Check Result</button>
@@ -79,55 +95,54 @@
       <tr> 
         <th>SUBJECT</th>
         <th>SCORE</th>
-        <th>REMARKS</th>
       </tr>
       <tr>
         <td>ENGLISH</td> 
         <td>{{gold.ENGLISH}}</td>
       </tr>
       <tr>
-        <td>MATHEMATICS</td> 
-        <td>{{gold.MATHEMATICS}}</td>
+        <td class="table-info">MATHEMATICS</td> 
+        <td class="table-info">{{gold.MATHEMATICS}}</td>
       </tr>
       <tr>
         <td>PHYSICS</td> 
         <td>{{gold.PHYSICS}}</td>
       </tr>
       <tr>
-        <td>CHEMISTRY</td> 
-        <td>{{gold.CHEMISTRY}}</td>
+        <td class="table-info">CHEMISTRY</td> 
+        <td class="table-info">{{gold.CHEMISTRY}}</td>
       </tr>
       <tr>
         <td>BIOLOGY</td> 
         <td>{{gold.BIOLOGY}}</td>
       </tr>
       <tr>
-        <td>ANIMAL HUSBANDRY</td> 
-        <td>{{gold.ANIMALHUSBANDRY}}</td>
+        <td class="table-info">ANIMAL HUSBANDRY</td> 
+        <td class="table-info">{{gold.ANIMALHUSBANDRY}}</td>
       </tr>
       <tr>
         <td>ISLAMIC STUDIES</td> 
         <td>{{gold.ISLAMICSTUDIES}}</td>
       </tr>
       <tr>
-        <td>GEOGRAPHY</td> 
-        <td>{{gold.GEOGRAPHY}}</td>
+        <td class="table-info">GEOGRAPHY</td> 
+        <td class="table-info">{{gold.GEOGRAPHY}}</td>
       </tr>
       <tr>
         <td>ECONOMICS</td> 
         <td>{{gold.ECONOMICS}}</td>
       </tr> 
       <tr>
-        <td>GOVERNMENT</td> 
-        <td>{{gold.GOVERNMENT}}</td>
+        <td class="table-info">GOVERNMENT</td> 
+        <td class="table-info">{{gold.GOVERNMENT}}</td>
       </tr>
       <tr>
         <td>LITERATURE IN ENGLISH</td> 
         <td>{{gold.LITERATURE}}</td>
       </tr>
       <tr>
-        <td>HAUSA LANGUAGE</td> 
-        <td>{{gold.HAUSALANGUAGE}}</td>
+        <td class="table-info">HAUSA LANGUAGE</td> 
+        <td class="table-info">{{gold.HAUSALANGUAGE}}</td>
       </tr>
       <tr> 
         <th>TOTAL</th>
