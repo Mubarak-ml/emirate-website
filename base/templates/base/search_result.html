@@ -29,7 +29,7 @@
                     </select>
                   </div>
                   <div class="form-group">
-                    <input type="text" name="StudentNo" class="form-control border-0 p-4" placeholder="Enter Student Number" required="required" />
+                    <input type="text" name="StudentNo" class="form-control border-0 p-4" placeholder="Enter Admission Number" required="required" />
                   </div>
                   <div>
                     <button type="submit" class="btn btn-dark btn-block border-0 py-3">Check Result</button>
@@ -61,13 +61,14 @@
 </style>
 <div class="card text-center print-page" id = "content" style="display: none;">
   <div class="card-header">
-    <h2>STUDENT RESULT</h2>
+    <h3>ARGUNGU EMIRATE SECONDARY SCHOOL</h3>
+    <h4>STUDENT RESULT</h4>
     <h5>FOR {{gold.TERM}} TERM, {{gold.YEAR}} ACADEMIC SESSION</h5>
   </div>
   <div class="card-body">
     <table class="table">
       <tr>
-        <th>STUDENT NUMBER: 
+        <th>ADMISSION NUMBER: 
           <td>{{gold.StudentNo}}</td>
         </th>
         <th>NAME:
