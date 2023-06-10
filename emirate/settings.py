@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-n)pba@!$kep*%)_zkm=3(6l450g2wxo(w9h!*ggqv^c^l=!fp='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
@@ -156,8 +156,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # S3 Bucket Configurations
 
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
+AWS_ACCESS_KEY_ID = 'AKIA43LDC2JXO6VRA6OC'
+AWS_SECRET_ACCESS_KEY = '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'
 AWS_STORAGE_BUCKET_NAME = 'hanancomputers'
 AWS_S3_REGION_NAME = "us-east-2"
 AWS_S3_SIGNATURE_VERSION = "s3v4"
