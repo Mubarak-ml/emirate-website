@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'django-insecure-n)pba@!$kep*%)_zkm=3(6l450g2wxo(w9h!*ggqv^c^l=!fp='
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -128,25 +128,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-""" STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-MEDIA_URL ='/images/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/images') """
+MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/images')
 
-STATIC_LOCATION = 'staticfiles'
+MEDIA_URL ='/images/'
+
+MEDIA_LOCATION = 'images'
+
+""" STATIC_LOCATION = 'staticfiles'
 STATIC_URL = 'https://hanancomputers/staticfiles/'
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 MEDIA_LOCATION = 'images'
 MEDIA_URL ='https://hanancomputers.s3.amazonaws.com/images/'
-DEFAULT_FILE_STORAGE = 'emirate.media_storages.MediaStorage'
+DEFAULT_FILE_STORAGE = 'emirate.media_storages.MediaStorage' """
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -156,7 +158,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # S3 Bucket Configurations
 
 
-AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+""" AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = 'hanancomputers'
 AWS_S3_REGION_NAME = "us-east-2"
@@ -165,7 +167,7 @@ AWS_QUERYSTRING_AUTH = False
 
 AWS_S3_FILE_OVERWRITE = False
 AWS_DEFAULT_ACL = None
-AWS_LOCATION = 'staticfiles'
+AWS_LOCATION = 'staticfiles' """
 
 # HTTP SETTINGS
 SESSION_COOKIE_SECURE = True
