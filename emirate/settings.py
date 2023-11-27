@@ -170,9 +170,9 @@ AWS_DEFAULT_ACL = None
 AWS_LOCATION = 'staticfiles' """
 
 # HTTP SETTINGS
-#SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 CSRF_COOKIES_SECURE = True
-#SECURE_SSL_REDIRECT = True
+SECURE_SSL_REDIRECT = True
 CSRF_TRUSTED_ORIGIN = ['https://www.argunguemiratesecondaryschool.org.ng', 'https://argunguemiratesecondaryschool.org.ng', 'http://www.argunguemiratesecondaryschool.org.ng', 'http://argunguemiratesecondaryschool.org.ng']
 
 
